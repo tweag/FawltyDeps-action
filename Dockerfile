@@ -10,4 +10,4 @@ RUN . /opt/venv/bin/activate \
 
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-ENTRYPOINT ["/opt/venv/bin/fawltydeps"]
+CMD ["/opt/venv/bin/fawltydeps"]
