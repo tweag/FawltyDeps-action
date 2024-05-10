@@ -1,14 +1,18 @@
-FROM python:3.12-slim as builder
+FROM python:3.12-alpine
 
-ENV VIRTUAL_ENV=/opt/venv
+RUN mkdir -p /github/workspace
+RUN addgroup -S app && adduser -S -G app app
+RUN chown app:app /github/workspace
+
+USER app
+
+ENV VIRTUAL_ENV=/home/app/venv
 RUN python -m venv $VIRTUAL_ENV
-RUN  . /opt/venv/bin/activate \
+RUN  source $VIRTUAL_ENV/bin/activate \
     && pip install --no-cache-dir --upgrade pip setuptools  \
     && pip install --no-cache-dir fawltydeps==v0.15.0
 
-FROM python:3.12-slim
+ENV PATH="/home/app/venv/bin:$PATH"
+WORKDIR /github/workspace
 
-COPY --from=builder /opt/venv opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-ENTRYPOINT ["/opt/venv/bin/fawltydeps"]
+ENTRYPOINT ["/home/app/venv/bin/fawltydeps"]
