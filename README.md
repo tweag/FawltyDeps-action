@@ -2,9 +2,9 @@
 
 # FawltyDeps GitHub Action
 
-[FawltyDeps](https://github.com/tweag/FawltyDeps) [GitHub Action](https://docs.github.com/en/actions) to lint packages for _undeclared_ or _unused_ 3rd-party dependencies.
+This [FawltyDeps](https://github.com/tweag/FawltyDeps) [GitHub Action](https://docs.github.com/en/actions) lints packages for _undeclared_ or _unused_ 3rd-party dependencies.
 
-About [FawltyDeps](https://github.com/tweag/FawltyDeps):
+See more about [FawltyDeps](https://github.com/tweag/FawltyDeps):
 > FawltyDeps is a dependency checker for Python that finds _undeclared_ and/or
 > _unused_ 3rd-party dependencies in your Python project.
 > The name is inspired by the Monty Python-adjacent
