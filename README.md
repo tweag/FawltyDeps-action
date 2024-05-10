@@ -44,15 +44,22 @@ This action will run `fawltydeps` in the project directory for a Python codebase
 
 ## Example usage
 
+You need to use a `checkout` action before
 Simple usage:
 
-    uses: tweag/FawltyDeps-action@v0.0.2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tweag/FawltyDeps-action@v0.0.2
 
 More advanced example with extra command line options:
 
-    uses: tweag/FawltyDeps-action@v0.0.2
-    with:
-      options: --list-sources --list-imports --list-deps --detailed
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: fawltydeps lint
+        uses: tweag/FawltyDeps-action@v0.0.2
+        with:
+          options: --list-sources --list-imports --list-deps --detailed
 
 ## Documentation
 
