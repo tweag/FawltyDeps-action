@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  fawltydeps:
+    runs-on: ubuntu-latest
+    name: FawltyDeps
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: FawltyDeps
+        uses: ./
+        id: fawltydeps-selftest
+        with:
+          options: "--help"
+

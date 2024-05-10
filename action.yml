@@ -1,0 +1,19 @@
+name: 'FawltyDeps'
+description: 'Check a Python project for _undeclared_ and _unused_ 3rd party dependencies'
+# Inspired by and adapted from https://github.com/psf/black/blob/main/action.yml
+inputs:
+  options:
+    description: "Options passed to fawltydeps. Use `fawltydeps --help` to see available options. Default:
+      ''"
+    required: false
+    default: ""
+branding:
+  color: "purple"
+  icon: "check-circle"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+      - fawltydeps
+      - ${{ inputs.options }}
+
