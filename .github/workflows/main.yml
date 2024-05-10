@@ -11,5 +11,5 @@ jobs:
         uses: ./
         id: fawltydeps-selftest
         with:
-          args: "--help"
+          options: "--help"
 
