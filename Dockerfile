@@ -1,12 +1,13 @@
 FROM python:3.12-slim
-ARG FAWLTYDEPS_VERSION=v0.15.0
+ARG VERSION=v0.15.0
 
-ENV VIRTUAL_ENV=/home/app/venv
+ENV VIRTUAL_ENV=/opt/venv
 RUN python -m venv $VIRTUAL_ENV
-RUN  source $VIRTUAL_ENV/bin/activate \
+RUN . $VIRTUAL_ENV/bin/activate
+RUN . /opt/venv/bin/activate \
     && pip install --no-cache-dir --upgrade pip setuptools  \
-    && pip install --no-cache-dir fawltydeps==$FAWLTYDEPS_VERSION
+    && pip install --no-cache-dir fawltydeps==$VERSION
 
-ENV PATH="/home/app/venv/bin:$PATH"
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-ENTRYPOINT ["/home/app/venv/bin/fawltydeps"]
+ENTRYPOINT ["/opt/venv/bin/fawltydeps"]
