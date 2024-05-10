@@ -1,11 +1,10 @@
+![Build](https://img.shields.io/github/actions/workflow/status/tweag/FawltyDeps-action/main.yml) [![Code of conduct](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) 
+
 # FawltyDeps GitHub Action
 
-[FawltyDeps](https://github.com/tweag/FawltyDeps) [GitHub Action](https://docs.github.com/en/actions) to lint packages for _undeclared_ or _unused_ 3rd-party dependencies.
+This [FawltyDeps](https://github.com/tweag/FawltyDeps) [GitHub Action](https://docs.github.com/en/actions) lints packages for _undeclared_ or _unused_ 3rd-party dependencies.
 
-# 
-[Build](https://img.shields.io/github/actions/workflow/status/tweag/fawltydeps-action/ci.yaml) [![Code of conduct](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
-
-About [FawltyDeps](https://github.com/tweag/FawltyDeps):
+See more about [FawltyDeps](https://github.com/tweag/FawltyDeps):
 > FawltyDeps is a dependency checker for Python that finds _undeclared_ and/or
 > _unused_ 3rd-party dependencies in your Python project.
 > The name is inspired by the Monty Python-adjacent
@@ -43,15 +42,22 @@ This action will run `fawltydeps` in the project directory for a Python codebase
 
 ## Example usage
 
+You need to use a `checkout` action before
 Simple usage:
 
-    uses: tweag/FawltyDeps-action@v0.0.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tweag/FawltyDeps-action@v0.0.2
 
 More advanced example with extra command line options:
 
-    uses: tweag/FawltyDeps-action@v0.0.1
-    with:
-      options: --list-sources --list-imports --list-deps --detailed
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: fawltydeps lint
+        uses: tweag/FawltyDeps-action@v0.0.2
+        with:
+          options: --list-sources --list-imports --list-deps --detailed
 
 ## Documentation
 
