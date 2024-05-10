@@ -7,38 +7,12 @@ inputs:
       ''"
     required: false
     default: ""
-  summary:
-    description: "Whether to add the output to the workflow summary"
-    required: false
-    default: true
 branding:
   color: "purple"
   icon: "check-circle"
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  steps:
-    - name: fawltydeps
-      run: |
-        set -euo pipefail
-        set +e
-        out=$(fawltydeps $INPUT_OPTIONS $INPUT_SRC)
-        exit_code=$?
-        set -e
-
-        echo "$out"
-
-        if [[ "${{ inputs.summary }}" = "true" ]]; then
-          echo 
-          echo "\`\`\`python" >> "$GITHUB_STEP_SUMMARY"
-          echo "${out}" >> "$GITHUB_STEP_SUMMARY"
-          echo "\`\`\`" >> "$GITHUB_STEP_SUMMARY"
-        fi
-
-        exit "$exit_code"
-  env:
-      INPUT_OPTIONS: ${{ inputs.options }}
-      INPUT_SRC: ${{ inputs.src }}
-      pythonioencoding: utf-8
-  shell: bash
+  args:
+      - ${{ inputs.options }}
 
