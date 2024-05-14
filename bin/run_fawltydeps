@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Running fawltydeps $*"
+fawltydeps "$@"
+exit $?
 fawltydeps_result=$(fawltydeps "$@")
 exit_code=$?
 
