@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+echo "Running fawltydeps $*"
+fawltydeps_result=$(fawltydeps "$@")
+exit_code=$?
+
+# The fawltydeps output can be a multiline string. By default, GITHUB_OUTPUT expects
+# output to be on a single line, so a (random) delimiter needs to be used
+# so that the output is parsed properly.
+# See https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
+{
+    echo "fawltydeps-output<<${DELIMITER}"
+    echo "${fawltydeps_result}"
+    echo "${DELIMITER}"
+} >> "${GITHUB_OUTPUT}"
+
+exit $exit_code

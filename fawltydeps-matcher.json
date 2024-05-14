@@ -1,0 +1,23 @@
+{
+	"problemMatcher": [
+		{
+			"owner": "fawltydeps-matcher",
+			"pattern": [
+				{
+					"regexp": "(These imports appear to be .* dependencies):$",
+					"message": 1
+				},
+				{
+					"regexp": "^- '([^']+)' imported at:$",
+					"message": 1
+				},
+				{
+					"regexp": "^    (.+):([0-9]+)$",
+					"file": 1,
+					"line": 2,
+                    "loop": true
+				}
+			]
+		}
+	]
+}

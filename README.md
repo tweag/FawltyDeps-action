@@ -61,7 +61,7 @@ More advanced example with extra command line options:
 
 ## Documentation
 
-This action was inspired by the [black]() and [isort-action]() GitHub actions. It currently uses the Docker method of executing actions.
+This action was inspired by and partially derived from the MIT-licensed [black](https://black.readthedocs.io/en/stable/integrations/github_actions.html) and [isort-action](https://github.com/isort/isort-action) GitHub actions.
 
 ## Development
 

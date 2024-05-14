@@ -1,19 +1,58 @@
 name: 'FawltyDeps'
 description: 'Check a Python project for _undeclared_ and _unused_ 3rd party dependencies'
-# Inspired by and adapted from https://github.com/psf/black/blob/main/action.yml
+  # Inspired by and adapted from:
+  # https://github.com/psf/black/blob/main/action.yml
+  # https://github.com/isort/isort-action
 inputs:
   options:
     description: "Options passed to fawltydeps. Use `fawltydeps --help` to see available options. Default:
       ''"
     required: false
     default: ""
+  requirements-files:
+    description: >
+      path(s) to requirements files that should be installed to properly
+      configure third-party imports
+    required: false
+  paths:
+    description: >
+      files or directories to scan for dependency issues
+    required: false
+    default: .
 branding:
   color: "purple"
   icon: "check-circle"
+outputs:
+  fawltydeps-result:
+    description: fawltydeps result
+    value: ${{ steps.run-fawltydeps.outputs.fawltydeps-output }}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - run: $GITHUB_ACTION_PATH/bin/ensure_python
+      shell: bash
+
   args:
       - fawltydeps
       - ${{ inputs.options }}
 
+runs:
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/bin/ensure_python
+      shell: bash
+    - run: >
+        $GITHUB_ACTION_PATH/bin/install_packages
+        ${{ inputs.fawltydeps-version }}
+        ${{ inputs.requirements-files || inputs.requirementsFiles }}
+      shell: bash
+    - run: echo "::add-matcher::$GITHUB_ACTION_PATH/fawltydeps-matcher.json"
+      shell: bash
+    - id: run-isort
+      run: >
+        $GITHUB_ACTION_PATH/bin/run_fawltydeps
+        ${{ inputs.options }}
+        ${{ inputs.paths }}
+      shell: bash
+    - run: echo "::remove-matcher owner=fawltydeps-matcher::"
+      shell: bash
