@@ -8,10 +8,10 @@
 					"message": 1
 				},
 				{
-					"regexp": "^    (.+):([0-9]+)$",
+					"regexp": "^	(.+):([0-9]+)$",
 					"file": 1,
 					"line": 2,
-                    "loop": true
+					"loop": true
 				}
 			]
 		}
