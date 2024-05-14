@@ -16,8 +16,16 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
 } >> "${GITHUB_OUTPUT}"
 
 if [[ "$exit_code" -eq 0 ]]; then
-    echo "OK: fawltydeps :rocket:" > "$GITHUB_STEP_SUMMARY"
+    echo "OK: 'fawltydeps $*' :rocket:" > "$GITHUB_STEP_SUMMARY"
 else
-    echo "Error: fawltydeps found issues" > "$GITHUB_STEP_SUMMARY"
+    {
+        # shellcheck disable=SC2006
+        cat <<EOF
+Error: 'fawltydeps $*' found issues:
+```
+${fawltydeps_result}
+```
+EOF
+    } > "$GITHUB_STEP_SUMMARY"
 fi
 exit $exit_code

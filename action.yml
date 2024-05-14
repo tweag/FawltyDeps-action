@@ -36,13 +36,9 @@ runs:
         ${{ inputs.fawltydeps-version }}
         ${{ inputs.requirements-files || inputs.requirementsFiles }}
       shell: bash
-    - run: echo "::add-matcher::$GITHUB_ACTION_PATH/fawltydeps-matcher.json"
-      shell: bash
     - id: run-fawltydeps
       run: >
         $GITHUB_ACTION_PATH/bin/run_fawltydeps
         ${{ inputs.options }}
         ${{ inputs.paths }}
-      shell: bash
-    - run: echo "::remove-matcher owner=fawltydeps-matcher::"
       shell: bash
