@@ -4,10 +4,6 @@
 			"owner": "fawltydeps-matcher",
 			"pattern": [
 				{
-					"regexp": "(These imports appear to be .* dependencies):$",
-					"message": 1
-				},
-				{
 					"regexp": "^- '([^']+)' imported at:$",
 					"message": 1
 				},
