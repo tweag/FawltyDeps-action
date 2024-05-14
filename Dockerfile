@@ -8,4 +8,4 @@ RUN $VIRTUAL_ENV/bin/pip install --no-cache-dir --upgrade pip setuptools  \
 
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-CMD ["/opt/venv/bin/fawltydeps"]
+CMD ["${VIRTUAL_ENV}/bin/fawltydeps"]
