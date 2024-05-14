@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-isort_version=$1
+fawltydeps_version=$1
 requirements_files=$2
 
 echo "::group::Install isort"
-if [ -z "$isort_version" ] || [ "$isort_version" == "latest" ]; then
-    echo "Installing latest version of isort"
-    python3 -m pip install "isort[requirements_deprecated_finder,pipfile_deprecated_finder]"
+if [ -z "$fawltydeps_version" ] || [ "$fawltydeps_version" == "latest" ]; then
+    echo "Installing latest version of fawltydeps"
+    python3 -m pip install "fawltydeps[requirements_deprecated_finder,pipfile_deprecated_finder]"
 else
-    echo "Installing isort==$isort_version"
-    python3 -m pip install "isort[requirements_deprecated_finder,pipfile_deprecated_finder]==$isort_version"
+    echo "Installing isort==$fawltydeps_version"
+    python3 -m pip install "fawltydeps[requirements_deprecated_finder,pipfile_deprecated_finder]==$fawltydeps_version"
 fi
 echo "::endgroup::"
 

@@ -38,7 +38,7 @@ runs:
       shell: bash
     - run: echo "::add-matcher::$GITHUB_ACTION_PATH/fawltydeps-matcher.json"
       shell: bash
-    - id: run-isort
+    - id: run-fawltydeps
       run: >
         $GITHUB_ACTION_PATH/bin/run_fawltydeps
         ${{ inputs.options }}
