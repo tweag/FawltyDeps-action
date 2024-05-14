@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Running fawltydeps $*"
-fawltydeps "$@"
-exit $?
-fawltydeps_result=$(fawltydeps "$@")
+fawltydeps_result=$(fawltydeps "$@" 2>&1)
 exit_code=$?
 
 # The fawltydeps output can be a multiline string. By default, GITHUB_OUTPUT expects
