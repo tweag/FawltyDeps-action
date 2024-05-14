@@ -18,7 +18,7 @@ inputs:
     description: >
       files or directories to scan for dependency issues
     required: false
-    default: .
+    default: null
 branding:
   color: "purple"
   icon: "check-circle"
