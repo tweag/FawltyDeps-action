@@ -27,16 +27,6 @@ outputs:
     description: fawltydeps result
     value: ${{ steps.run-fawltydeps.outputs.fawltydeps-output }}
 runs:
-  using: 'composite'
-  steps:
-    - run: $GITHUB_ACTION_PATH/bin/ensure_python
-      shell: bash
-
-  args:
-      - fawltydeps
-      - ${{ inputs.options }}
-
-runs:
   using: composite
   steps:
     - run: $GITHUB_ACTION_PATH/bin/ensure_python
