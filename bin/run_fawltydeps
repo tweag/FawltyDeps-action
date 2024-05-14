@@ -22,9 +22,8 @@ else
         # shellcheck disable=SC2006
         cat <<EOF
 Error: 'fawltydeps $*' found issues:
-```
+
 ${fawltydeps_result}
-```
 EOF
     } > "$GITHUB_STEP_SUMMARY"
 fi
