@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Running fawltydeps $*"
-fawltydeps_result=$(fawltydeps "$@" 2>&1)
+fawltydeps_result=$(fawltydeps "$@")
 exit_code=$?
 
 # The fawltydeps output can be a multiline string. By default, GITHUB_OUTPUT expects
@@ -15,4 +15,5 @@ DELIMITER=$(echo $RANDOM | md5sum | head -c 20)
     echo "${DELIMITER}"
 } >> "${GITHUB_OUTPUT}"
 
+cat "${GITHUB_OUTPUT}"
 exit $exit_code
