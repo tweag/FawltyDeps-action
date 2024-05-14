@@ -6,10 +6,10 @@ requirements_files=$2
 echo "::group::Install fawltydeps"
 if [ -z "$fawltydeps_version" ] || [ "$fawltydeps_version" == "latest" ]; then
     echo "Installing latest version of fawltydeps"
-    python3 -m pip install "fawltydeps[requirements_deprecated_finder,pipfile_deprecated_finder]"
+    python3 -m pip install "fawltydeps"
 else
     echo "Installing fawltydeps==$fawltydeps_version"
-    python3 -m pip install "fawltydeps[requirements_deprecated_finder,pipfile_deprecated_finder]==$fawltydeps_version"
+    python3 -m pip install "fawltydeps==$fawltydeps_version"
 fi
 echo "::endgroup::"
 
