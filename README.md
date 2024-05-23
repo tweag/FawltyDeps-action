@@ -48,7 +48,7 @@ Simple usage:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: tweag/FawltyDeps-action@v0.0.2
+      - uses: tweag/FawltyDeps-action@v0.0.3
 
 More advanced example with customized command line options:
 
@@ -56,7 +56,7 @@ More advanced example with customized command line options:
       - name: checkout
         uses: actions/checkout@v4
       - name: fawltydeps lint
-        uses: tweag/FawltyDeps-action@v0.0.2
+        uses: tweag/FawltyDeps-action@v0.0.3
         with:
           options: --list-sources --list-imports --list-deps --detailed
 
