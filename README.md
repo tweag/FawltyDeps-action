@@ -48,7 +48,7 @@ Simple usage:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: tweag/FawltyDeps-action@v0.0.3
+      - uses: tweag/FawltyDeps-action@v0.1.0
 
 More advanced example with customized command line options:
 
@@ -56,13 +56,15 @@ More advanced example with customized command line options:
       - name: checkout
         uses: actions/checkout@v4
       - name: fawltydeps lint
-        uses: tweag/FawltyDeps-action@v0.0.3
+        uses: tweag/FawltyDeps-action@v0.1.0
         with:
           options: --list-sources --list-imports --list-deps --detailed
 
+Invoking FawltyDeps Using `options: --detailed` yields good results when you just want to see what problems may be present.
+
 ## Documentation
 
-This action was inspired by the [black]() and [isort-action]() GitHub actions. It currently uses the Docker method of executing actions.
+This action was inspired by and partially derived from the MIT-licensed [black](https://black.readthedocs.io/en/stable/integrations/github_actions.html) and [isort-action](https://github.com/isort/isort-action) GitHub actions.
 
 ## Development
 
