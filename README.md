@@ -44,23 +44,35 @@ This action will run `fawltydeps` in the project directory for a Python codebase
 
 You need to use a `checkout` action before the FawltyDeps action.
 
-Simple usage:
+For simple usage, save this in your project as `.github/workflows/lint.yml`:
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: tweag/FawltyDeps-action@v0.1.0
+```yaml
+---
+name: Lint
 
-More advanced example with customized command line options:
+on: pull_request
 
+jobs:
+  lint:
+    name: FawltyDeps
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: fawltydeps lint
-        uses: tweag/FawltyDeps-action@v0.1.0
-        with:
-          options: --list-sources --list-imports --list-deps --detailed
+      - name: lint - FawltyDeps
+        uses: tweag/FawltyDeps-action@v0.2.0
+```
 
-Invoking FawltyDeps Using `options: --detailed` yields good results when you just want to see what problems may be present.
+Here is a more advanced example with customized command line options:
+
+```yaml
+      - name: lint - FawltyDeps
+        uses: tweag/FawltyDeps-action@v0.2.0
+        with:
+          options: --detailed --exclude vendor/
+```
+
+Invoking FawltyDeps using `options: --detailed` yields good results when you just want to see what problems may be present. That is now the _default_, if you do not specify any options. You can also configure FawltyDeps through the `[tool.fawltydeps]` section in your project's `pyproject.toml` file, see [Configuration](https://github.com/tweag/FawltyDeps#configuration] in the main FawltyDeps documentation for more details.
 
 ## Documentation
 
