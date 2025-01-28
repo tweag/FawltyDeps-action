@@ -5,10 +5,11 @@ description: 'Check a Python project for _undeclared_ and _unused_ 3rd party dep
   # https://github.com/isort/isort-action
 inputs:
   options:
-    description: "Options passed to fawltydeps. Use `fawltydeps --help` to see available options. Default:
-      ''"
+    description: |
+      Options passed to fawltydeps. Use `fawltydeps --help` to see available options.
+      The default is: "--detailed"
     required: false
-    default: ""
+    default: "--detailed"
   fawltydeps-version:
     description: Version of fawltydeps to use
     required: false
