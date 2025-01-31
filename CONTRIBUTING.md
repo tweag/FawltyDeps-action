@@ -44,10 +44,6 @@ git clone git@github.com:<your_username>/FawltyDeps-action-action-action-action-
 
 ### Set Up Your Development Environment
 
-#### Docker
-
-This uses [Docker](https://docker.io/) to package the container needed for the GitHub action.
-
 ## Making Changes
 
 ### Branch Naming
